@@ -1,3 +1,5 @@
-<highlight language="html"><![CDATA[
+<highlight language="html">
+<![CDATA[
 <p>Hello.</p>
-]]></highlight>
+]]>
+</highlight>
