@@ -41,3 +41,6 @@ case_override_lexer = assertTemplateOutput "override-lexer" "python"
 case_override_lexer_with_linenos :: Assertion
 case_override_lexer_with_linenos =
     assertTemplateOutput "override-lexer-linenos" "python-linenos"
+
+case_literal_html :: Assertion
+case_literal_html = assertTemplateOutput "literal-html" "html"
