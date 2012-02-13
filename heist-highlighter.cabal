@@ -9,10 +9,25 @@ Author:              Dag Odenhall
 Maintainer:          dag.odenhall@gmail.com
 Category:            Web
 Build-type:          Simple
-Cabal-version:       >=1.2
+Cabal-version:       >=1.8
+
+Flag tests
+  Description:         Build the test suite
+  Default:             False
 
 Library
   HS-Source-Dirs:      src
   GHC-Options:         -Wall
   Exposed-modules:     Text.Templating.Heist.Splices.Highlighter
   Build-depends:       base, blaze-html, bytestring, heist, highlighter, text, xmlhtml
+
+Executable test-heist-highlighter
+  if flag(tests)
+    Buildable:           True
+  else
+    Buildable:           False
+  HS-Source-Dirs:      test
+  Main-Is:             Main.hs
+  GHC-Options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  Build-depends:       base, blaze-builder, blaze-html, bytestring, heist, heist-highlighter, highlighter,
+                       HUnit, test-framework, test-framework-hunit, test-framework-th, text, xmlhtml
