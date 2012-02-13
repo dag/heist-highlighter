@@ -25,12 +25,12 @@ Library
   GHC-Options     : -Wall
   Exposed-modules : Text.Templating.Heist.Splices.Highlighter
   Build-depends   :
-    base == 4.*,
-    bytestring,
-    heist,
-    highlighter,
-    text,
-    xmlhtml
+    base        == 4.*,
+    bytestring  == 0.9.*,
+    heist       == 0.7.*,
+    highlighter == 0.2.*,
+    text        == 0.11.*,
+    xmlhtml     == 0.1.*
 
 Executable test-heist-highlighter
   if flag(tests)
@@ -41,13 +41,13 @@ Executable test-heist-highlighter
   Main-Is        : Main.hs
   GHC-Options    : -Wall -threaded -rtsopts -with-rtsopts=-N
   Build-depends  :
-    base == 4.*,
-    blaze-builder,
-    bytestring,
-    heist,
-    heist-highlighter,
-    highlighter,
-    HUnit,
-    test-framework-hunit,
-    test-framework-th,
-    xmlhtml
+    base                 == 4.*,
+    blaze-builder        == 0.3.*,
+    bytestring           == 0.9.*,
+    heist                == 0.7.*,
+    heist-highlighter    == 0.1.0,
+    highlighter          == 0.2.*,
+    HUnit                == 1.2.*,
+    test-framework-hunit == 0.2.*,
+    test-framework-th    == 0.2.*,
+    xmlhtml              == 0.1.*

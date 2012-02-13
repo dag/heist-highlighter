@@ -4,15 +4,15 @@
 
 module Main where
 
-import Blaze.ByteString.Builder
-import Test.Framework.Providers.HUnit
-import Test.Framework.TH
-import Test.HUnit
-import Text.Highlighter.Lexers.Haskell
-import Text.Templating.Heist
-import Text.Templating.Heist.Splices.Highlighter
+import Blaze.ByteString.Builder                  (toByteString)
+import Test.Framework.Providers.HUnit            (testCase)
+import Test.Framework.TH                         (defaultMainGenerator)
+import Test.HUnit                                (Assertion, (@?=))
+import Text.Highlighter.Lexers.Haskell           (lexer)
+import Text.Templating.Heist.Splices.Highlighter (highlighterSplice)
 
-import qualified Data.ByteString as B
+import qualified Data.ByteString       as B
+import qualified Text.Templating.Heist as H
 
 main :: IO ()
 main = $defaultMainGenerator
@@ -20,11 +20,11 @@ main = $defaultMainGenerator
 assertTemplateOutput :: B.ByteString -> String -> Assertion
 assertTemplateOutput template fixture =
   do
-    ets <- loadTemplates "test/templates" $
-           bindSplice "highlight" (highlighterSplice lexer) $
-           defaultHeistState
+    ets <- H.loadTemplates "test/templates" $
+           H.bindSplice "highlight" (highlighterSplice lexer) $
+           H.defaultHeistState
     let ts = either error id ets
-    Just (b,_) <- renderTemplate ts template
+    Just (b,_) <- H.renderTemplate ts template
     f <- B.readFile $ "test/fixtures/" ++ fixture ++ ".html"
     toByteString b @?= f
 
