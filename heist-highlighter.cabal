@@ -1,33 +1,53 @@
-Name:                heist-highlighter
-Version:             0.1.0
-Synopsis:            Heist splice for syntax highlighting
-Description:         Heist splice for syntax highlighting using the highlighter package.
-Homepage:            https://github.com/dag/heist-highlighter
-License:             BSD3
-License-file:        LICENSE
-Author:              Dag Odenhall
-Maintainer:          dag.odenhall@gmail.com
-Category:            Web
-Build-type:          Simple
-Cabal-version:       >=1.8
+Name          : heist-highlighter
+Version       : 0.1.0
+Synopsis      : Heist splice for syntax highlighting
+Description   : Heist splice for syntax highlighting using the highlighter package.
+Homepage      : https://github.com/dag/heist-highlighter
+Bug-Reports   : https://github.com/dag/heist-highlighter/issues
+License       : BSD3
+License-file  : LICENSE
+Author        : Dag Odenhall
+Maintainer    : dag.odenhall@gmail.com
+Category      : Web
+Build-type    : Simple
+Cabal-version : >=1.8
+
+Source-Repository head
+  Type     : git
+  Location : git://github.com/dag/heist-highlighter.git
 
 Flag tests
-  Description:         Build the test suite
-  Default:             False
+  Description : Build the test suite
+  Default     : False
 
 Library
-  HS-Source-Dirs:      src
-  GHC-Options:         -Wall
-  Exposed-modules:     Text.Templating.Heist.Splices.Highlighter
-  Build-depends:       base, blaze-html, bytestring, heist, highlighter, text, xmlhtml
+  HS-Source-Dirs  : src
+  GHC-Options     : -Wall
+  Exposed-modules : Text.Templating.Heist.Splices.Highlighter
+  Build-depends   :
+    base == 4.*,
+    bytestring,
+    heist,
+    highlighter,
+    text,
+    xmlhtml
 
 Executable test-heist-highlighter
   if flag(tests)
-    Buildable:           True
+    Buildable    : True
   else
-    Buildable:           False
-  HS-Source-Dirs:      test
-  Main-Is:             Main.hs
-  GHC-Options:         -Wall -threaded -rtsopts -with-rtsopts=-N
-  Build-depends:       base, blaze-builder, blaze-html, bytestring, heist, heist-highlighter, highlighter,
-                       HUnit, test-framework, test-framework-hunit, test-framework-th, text, xmlhtml
+    Buildable    : False
+  HS-Source-Dirs : test
+  Main-Is        : Main.hs
+  GHC-Options    : -Wall -threaded -rtsopts -with-rtsopts=-N
+  Build-depends  :
+    base == 4.*,
+    blaze-builder,
+    bytestring,
+    heist,
+    heist-highlighter,
+    highlighter,
+    HUnit,
+    test-framework-hunit,
+    test-framework-th,
+    xmlhtml
